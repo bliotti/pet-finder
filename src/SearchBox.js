@@ -3,18 +3,20 @@ import { ANIMALS } from 'petfinder-client'
 import { Consumer } from './SearchContext'
 
 class SearchBox extends React.Component {
-  handleFormSubmit = event => {
-    event.preventDefault()
+  handleFormSubmit = e => {
+    e.preventDefault()
     this.props.search()
   }
 
   render() {
+    console.log('props', this.props)
+    console.log('state', this.state)
     return (
       <Consumer>
         {context => (
           <div className="search-params">
+            {console.log('context', context)}
             <form onSubmit={this.handleFormSubmit}>
-              {console.log(context)}
               <label htmlFor="location">
                 Location
                 <input

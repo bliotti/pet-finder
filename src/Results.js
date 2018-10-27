@@ -30,7 +30,7 @@ class Results extends React.Component {
   }
 
   componentDidMount() {
-    this.search
+    this.search()
   }
 
   search = () => {
