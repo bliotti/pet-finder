@@ -25,13 +25,13 @@
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-prettier": "^2.6.2",
 		"eslint-plugin-react": "^7.11.1",
-		"parcel-bundler": "^1.10.3",
+		"parcel-bundler": "^1.9.7",
 		"prettier": "^1.14.3"
 	},
 	"dependencies": {
-		"@reach/router": "^1.2.1",
+		"@reach/router": "^1.1.1",
 		"petfinder-client": "0.0.3",
-		"react": "^16.6.0",
-		"react-dom": "^16.6.0"
+		"react": "^16.4.2",
+		"react-dom": "^16.4.2"
 	}
 }

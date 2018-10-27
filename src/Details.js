@@ -1,30 +1,30 @@
-import React from "react";
-import pf from "petfinder-client";
-// import { navigate } from "@reach/router";
-import Carousel from "./Carousel";
+import React from 'react'
+import pf from 'petfinder-client'
+import { navigate } from '@reach/router'
+import Carousel from './Carousel'
 
 const petfinder = pf({
   key: process.env.REACT_APP_API_KEY,
   secret: process.env.REACT_APP_API_SECRET
-});
+})
 
 class Details extends React.Component {
   state = {
     loading: true
-  };
+  }
   componentDidMount() {
     petfinder.pet
       .get({
-        output: "full",
+        output: 'full',
         id: this.props.id
       })
       .then(data => {
-        const pet = data.petfinder.pet;
-        let breed;
+        const pet = data.petfinder.pet
+        let breed
         if (Array.isArray(pet.breeds.breed)) {
-          breed = pet.breeds.breed.join(", ");
+          breed = pet.breeds.breed.join(', ')
         } else {
-          breed = pet.breeds.breed;
+          breed = pet.breeds.breed
         }
 
         this.setState({
@@ -35,18 +35,18 @@ class Details extends React.Component {
           media: pet.media,
           breed,
           loading: false
-        });
+        })
       })
       .catch(() => {
-        // navigate("/");
-      });
+        navigate('/')
+      })
   }
   render() {
     if (this.state.loading) {
-      return <h1>loading …</h1>;
+      return <h1>loading …</h1>
     }
 
-    const { name, animal, breed, media, location, description } = this.state;
+    const { name, animal, breed, media, location, description } = this.state
 
     return (
       <div className="details">
@@ -59,8 +59,8 @@ class Details extends React.Component {
           <p>{description}</p>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Details;
+export default Details

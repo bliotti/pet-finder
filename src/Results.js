@@ -33,9 +33,7 @@ class Results extends React.Component {
     this.search
   }
 
-  //region kkk
-
-  search() {
+  search = () => {
     petfinder.pet
       .find({
         output: 'full',
@@ -43,32 +41,39 @@ class Results extends React.Component {
         animal: this.props.searchParams.animal,
         breed: this.props.searchParams.breed
       })
-
       .then(data => {
         let pets
+        console.log('d', data)
 
         if (data.petfinder.pets && data.petfinder.pets.pet) {
           if (Array.isArray(data.petfinder.pets.pet)) {
             pets = data.petfinder.pets.pet
+            console.log('1')
           } else {
             pets = [data.petfinder.pets.pet]
+            console.log('2')
           }
         } else {
           pets = []
+          console.log('3')
         }
 
-        this.setState({
-          pets
-        })
+        this.setState(
+          {
+            pets
+          },
+          console.log(pets)
+        )
       })
   }
 
   //region kkk
 
   render() {
+    console.log('PET', this.state.pets)
     return (
       <div className="search">
-        <SearchBox />
+        <SearchBox search={this.search} />
         {this.state.pets.map(pet => {
           let breed
 
@@ -102,5 +107,3 @@ export default function ResultsWithContext(props) {
     </Consumer>
   )
 }
-
-Results
